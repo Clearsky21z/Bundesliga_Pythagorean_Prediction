@@ -5,13 +5,11 @@ library(ggplot2)
 data_dir   <- "."
 file_regex <- "^(D1|DL)_.*\\.csv$"
 
-# Sanity check
 csvs <- list.files(data_dir, pattern = file_regex, full.names = TRUE)
 if (length(csvs) == 0) stop("No Bundesliga CSVs found. Check names/pattern.")
 message("Files found: ", paste(basename(csvs), collapse = ", "))
 
-## --- 1) Utilities to build PiT/EoS tables (book-style) --------------------
-
+## Build PiT/EoS tables
 outcome <- function(hGoals, aGoals){
   res <- character(length(hGoals))
   res[hGoals >  aGoals] <- "H"
@@ -48,13 +46,12 @@ create.table <- function(hTeam, aTeam, hGoals, aGoals){
   out[order(-out$PTS, -out$GD, -out$GF), , drop = FALSE]
 }
 
-## --- 2) Pythagorean functions --------------------------------------------
+## Pythagorean functions
 pythag_frac <- function(GF, GA, b, c, d) (GF^b) / ((GF^c) + (GA^d))
 pythag_pts  <- function(PLD, GF, GA, a, b, c, d) a * pythag_frac(GF,GA,b,c,d) * PLD
 
-## --- 3) Pooled coefficient estimation over ALL seasons --------------------
+# Pooled coefficient estimation over ALL seasons
 
-# Read one season and return its end-of-season table (no with(); no raw object)
 read_season_eos <- function(csv_path) {
   df <- read.csv(csv_path, stringsAsFactors = FALSE)
   req <- c("HomeTeam","AwayTeam","FTHG","FTAG","FTR")
@@ -67,7 +64,6 @@ read_season_eos <- function(csv_path) {
   tab[, c("Season","Team","PLD","GF","GA","PTS")]
 }
 
-# Load and stack all seasons
 load_bundesliga_eos <- function(data_dir, pattern = file_regex) {
   files <- list.files(data_dir, pattern = pattern, full.names = TRUE)
   if (length(files) == 0) stop("No files matched. Check pattern/path.")
@@ -81,7 +77,6 @@ obj_mae_pool <- function(par, pool_df) {
   mean(abs(pool_df$PTS - pred))
 }
 
-# Fit pooled coefficients
 pool <- load_bundesliga_eos(data_dir, pattern = file_regex)
 
 start <- c(a=2.78, b=1.24, c=1.24, d=1.25)
@@ -92,7 +87,6 @@ coef_pool <- setNames(fit_pool$par, c("a","b","c","d"))
 cat(sprintf("Bundesliga pooled fit -> a=%.3f b=%.3f c=%.3f d=%.3f\n",
             coef_pool["a"],coef_pool["b"],coef_pool["c"],coef_pool["d"]))
 
-# In-sample evaluation
 pool$pred <- pythag_pts(pool$PLD, pool$GF, pool$GA,
                         coef_pool["a"],coef_pool["b"],coef_pool["c"],coef_pool["d"])
 cat(sprintf("Overall (in-sample): MAE=%.2f | r=%.3f\n",
@@ -104,7 +98,7 @@ by_season <- pool |>
             r = cor(PTS, pred), .groups = "drop")
 print(head(by_season))
 
-## --- 4) Leave-one-season-out CV (out-of-sample) ---------------------------
+# Leave-one-season-out CV (out-of-sample)
 loso_cv <- function(pool_df, start_par = c(2.78,1.24,1.24,1.25)) {
   seasons <- unique(pool_df$Season)
   rows <- vector("list", length(seasons))
@@ -131,23 +125,8 @@ cat(sprintf("LOSO median: MAE=%.2f | r=%.3f\n", median(cv$MAE), median(cv$r)))
 # cv[order(-cv$MAE), ][1:3, ]
 # cv[order(cv$MAE),  ][1:3, ]
 
-# --- Quick sanity check
 cat("Seasons loaded:", length(unique(pool$Season)), "\n")
 
-# --- Multi-start optimisation (robust)
-starts <- rbind(
-  c(2.78, 1.24, 1.24, 1.25),                 # Beggs (EPL) as anchor
-  c(2.60, 1.45, 1.45, 1.40),                 # nearby
-  matrix(c(2.4,2.9, 1.1,1.5, 1.1,1.5, 1.1,1.5), ncol=4, byrow=TRUE) # warm grid
-)
-best <- NULL; best_par <- NULL
-for (k in 1:nrow(starts)) {
-  fitk <- optim(par = starts[k,], fn = obj_mae_pool, pool_df = pool,
-                method = "Nelder-Mead",
-                control = list(maxit = 12000, reltol = 1e-12))
-  if (is.null(best) || fitk$value < best) { best <- fitk$value; best_par <- fitk$par }
-}
-coef_pool <- setNames(best_par, c("a","b","c","d"))
 
 # --- Print and save
 cat(sprintf("Bundesliga pooled coefficients (all seasons): a=%.4f  b=%.4f  c=%.4f  d=%.4f\n",

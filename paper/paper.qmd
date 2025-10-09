@@ -35,6 +35,6 @@ $$
 
 Optimization uses the Nelder–Mead simplex algorithm (derivative-free) with multiple starting values (including Beggs’ EPL coefficients) to reduce sensitivity to local minima. The resulting $(a^{\*},b^{\*},c^{\*},d^{\*})$ are treated as **Bundesliga-specific coefficients** and reused for forecasting in new seasons.
 
-## Out-of-Sample Validation (Historical)
+## O ut-of-Sample Validation (Historical)
 
 We assess generalization via leave-one-season-out (LOSO) validation. For each season $s$ in the estimation pool, we refit $(a,b,c,d)$ on all other seasons and evaluate on $s$. Performance is summarized by the median MAE and Pearson correlation $r$ between actual and predicted EoS points across held-out seasons.
