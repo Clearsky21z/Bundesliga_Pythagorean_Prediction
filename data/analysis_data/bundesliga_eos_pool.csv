@@ -1,0 +1,271 @@
+Season,Team,PLD,GF,GA,PTS
+D1_2010_2011.csv,Dortmund,34,67,22,75
+D1_2010_2011.csv,Leverkusen,34,64,44,68
+D1_2010_2011.csv,Bayern Munich,34,81,40,65
+D1_2010_2011.csv,Hannover,34,49,45,60
+D1_2010_2011.csv,Mainz,34,52,39,58
+D1_2010_2011.csv,Nurnberg,34,47,45,47
+D1_2010_2011.csv,Kaiserslautern,34,48,51,46
+D1_2010_2011.csv,Hamburg,34,46,52,45
+D1_2010_2011.csv,Freiburg,34,41,50,44
+D1_2010_2011.csv,FC Koln,34,47,62,44
+D1_2010_2011.csv,Hoffenheim,34,50,50,43
+D1_2010_2011.csv,Stuttgart,34,60,59,42
+D1_2010_2011.csv,Werder Bremen,34,47,61,41
+D1_2010_2011.csv,Schalke 04,34,38,44,40
+D1_2010_2011.csv,Wolfsburg,34,43,48,38
+D1_2010_2011.csv,M'gladbach,34,48,65,36
+D1_2010_2011.csv,Ein Frankfurt,34,31,49,34
+D1_2010_2011.csv,St Pauli,34,35,68,29
+D1_2011_2012.csv,Dortmund,34,80,25,81
+D1_2011_2012.csv,Bayern Munich,34,77,22,73
+D1_2011_2012.csv,Schalke 04,34,74,44,64
+D1_2011_2012.csv,M'gladbach,34,49,24,60
+D1_2011_2012.csv,Leverkusen,34,52,44,54
+D1_2011_2012.csv,Stuttgart,34,63,46,53
+D1_2011_2012.csv,Hannover,34,41,45,48
+D1_2011_2012.csv,Wolfsburg,34,47,60,44
+D1_2011_2012.csv,Werder Bremen,34,49,58,42
+D1_2011_2012.csv,Nurnberg,34,38,49,42
+D1_2011_2012.csv,Hoffenheim,34,41,47,41
+D1_2011_2012.csv,Freiburg,34,45,61,40
+D1_2011_2012.csv,Mainz,34,47,51,39
+D1_2011_2012.csv,Augsburg,34,36,49,38
+D1_2011_2012.csv,Hamburg,34,35,57,36
+D1_2011_2012.csv,Hertha,34,38,64,31
+D1_2011_2012.csv,FC Koln,34,39,75,30
+D1_2011_2012.csv,Kaiserslautern,34,24,54,23
+D1_2012_2013.csv,Bayern Munich,34,98,18,91
+D1_2012_2013.csv,Dortmund,34,81,42,66
+D1_2012_2013.csv,Leverkusen,34,65,39,65
+D1_2012_2013.csv,Schalke 04,34,58,50,55
+D1_2012_2013.csv,Freiburg,34,45,40,51
+D1_2012_2013.csv,Ein Frankfurt,34,49,46,51
+D1_2012_2013.csv,Hamburg,34,42,53,48
+D1_2012_2013.csv,M'gladbach,34,45,49,47
+D1_2012_2013.csv,Hannover,34,60,62,45
+D1_2012_2013.csv,Nurnberg,34,39,47,44
+D1_2012_2013.csv,Wolfsburg,34,47,52,43
+D1_2012_2013.csv,Stuttgart,34,37,55,43
+D1_2012_2013.csv,Mainz,34,42,44,42
+D1_2012_2013.csv,Werder Bremen,34,50,66,34
+D1_2012_2013.csv,Augsburg,34,33,51,33
+D1_2012_2013.csv,Hoffenheim,34,42,67,31
+D1_2012_2013.csv,Fortuna Dusseldorf,34,39,57,30
+D1_2012_2013.csv,Greuther Furth,34,26,60,21
+D1_2013_2014.csv,Bayern Munich,34,94,23,90
+D1_2013_2014.csv,Dortmund,34,80,38,71
+D1_2013_2014.csv,Schalke 04,34,63,43,64
+D1_2013_2014.csv,Leverkusen,34,60,41,61
+D1_2013_2014.csv,Wolfsburg,34,63,50,60
+D1_2013_2014.csv,M'gladbach,34,59,43,55
+D1_2013_2014.csv,Mainz,34,52,54,53
+D1_2013_2014.csv,Augsburg,34,47,47,52
+D1_2013_2014.csv,Hoffenheim,34,72,70,44
+D1_2013_2014.csv,Hannover,34,46,59,42
+D1_2013_2014.csv,Hertha,34,40,48,41
+D1_2013_2014.csv,Werder Bremen,34,42,66,39
+D1_2013_2014.csv,Ein Frankfurt,34,40,57,36
+D1_2013_2014.csv,Freiburg,34,43,61,36
+D1_2013_2014.csv,Stuttgart,34,49,62,32
+D1_2013_2014.csv,Hamburg,34,51,75,27
+D1_2013_2014.csv,Nurnberg,34,37,70,26
+D1_2013_2014.csv,Braunschweig,34,29,60,25
+D1_2014_2015.csv,Bayern Munich,34,80,18,79
+D1_2014_2015.csv,Wolfsburg,34,72,38,69
+D1_2014_2015.csv,M'gladbach,34,53,26,66
+D1_2014_2015.csv,Leverkusen,34,62,37,61
+D1_2014_2015.csv,Augsburg,34,43,43,49
+D1_2014_2015.csv,Schalke 04,34,42,40,48
+D1_2014_2015.csv,Dortmund,34,47,42,46
+D1_2014_2015.csv,Hoffenheim,34,49,55,44
+D1_2014_2015.csv,Ein Frankfurt,34,56,62,43
+D1_2014_2015.csv,Werder Bremen,34,50,65,43
+D1_2014_2015.csv,Mainz,34,45,47,40
+D1_2014_2015.csv,FC Koln,34,34,40,40
+D1_2014_2015.csv,Hannover,34,40,56,37
+D1_2014_2015.csv,Stuttgart,34,42,60,36
+D1_2014_2015.csv,Hertha,34,36,52,35
+D1_2014_2015.csv,Hamburg,34,25,50,35
+D1_2014_2015.csv,Freiburg,34,36,47,34
+D1_2014_2015.csv,Paderborn,34,31,65,31
+D1_2015_2016.csv,Bayern Munich,34,80,17,88
+D1_2015_2016.csv,Dortmund,34,82,34,78
+D1_2015_2016.csv,Leverkusen,34,56,40,60
+D1_2015_2016.csv,M'gladbach,34,67,50,55
+D1_2015_2016.csv,Schalke 04,34,51,49,52
+D1_2015_2016.csv,Mainz,34,46,42,50
+D1_2015_2016.csv,Hertha,34,42,42,50
+D1_2015_2016.csv,Wolfsburg,34,47,49,45
+D1_2015_2016.csv,FC Koln,34,38,42,43
+D1_2015_2016.csv,Hamburg,34,40,46,41
+D1_2015_2016.csv,Ingolstadt,34,33,42,40
+D1_2015_2016.csv,Augsburg,34,42,52,38
+D1_2015_2016.csv,Werder Bremen,34,50,65,38
+D1_2015_2016.csv,Darmstadt,34,38,53,38
+D1_2015_2016.csv,Hoffenheim,34,39,54,37
+D1_2015_2016.csv,Ein Frankfurt,34,34,52,36
+D1_2015_2016.csv,Stuttgart,34,50,75,33
+D1_2015_2016.csv,Hannover,34,31,62,25
+D1_2016_2017.csv,Bayern Munich,34,89,22,82
+D1_2016_2017.csv,RB Leipzig,34,66,39,67
+D1_2016_2017.csv,Dortmund,34,72,40,64
+D1_2016_2017.csv,Hoffenheim,34,64,37,62
+D1_2016_2017.csv,FC Koln,34,51,42,49
+D1_2016_2017.csv,Hertha,34,43,47,49
+D1_2016_2017.csv,Freiburg,34,42,60,48
+D1_2016_2017.csv,Werder Bremen,34,61,64,45
+D1_2016_2017.csv,M'gladbach,34,45,49,45
+D1_2016_2017.csv,Schalke 04,34,45,40,43
+D1_2016_2017.csv,Ein Frankfurt,34,36,43,42
+D1_2016_2017.csv,Leverkusen,34,53,55,41
+D1_2016_2017.csv,Augsburg,34,35,51,38
+D1_2016_2017.csv,Hamburg,34,33,61,38
+D1_2016_2017.csv,Mainz,34,44,55,37
+D1_2016_2017.csv,Wolfsburg,34,34,52,37
+D1_2016_2017.csv,Ingolstadt,34,36,57,32
+D1_2016_2017.csv,Darmstadt,34,28,63,25
+D1_2017_2018.csv,Bayern Munich,34,92,28,84
+D1_2017_2018.csv,Schalke 04,34,53,37,63
+D1_2017_2018.csv,Hoffenheim,34,66,48,55
+D1_2017_2018.csv,Dortmund,34,64,47,55
+D1_2017_2018.csv,Leverkusen,34,58,44,55
+D1_2017_2018.csv,RB Leipzig,34,57,53,53
+D1_2017_2018.csv,Stuttgart,34,36,36,51
+D1_2017_2018.csv,Ein Frankfurt,34,45,45,49
+D1_2017_2018.csv,M'gladbach,34,47,52,47
+D1_2017_2018.csv,Hertha,34,43,46,43
+D1_2017_2018.csv,Werder Bremen,34,37,40,42
+D1_2017_2018.csv,Augsburg,34,43,46,41
+D1_2017_2018.csv,Hannover,34,44,54,39
+D1_2017_2018.csv,Mainz,34,38,52,36
+D1_2017_2018.csv,Freiburg,34,32,56,36
+D1_2017_2018.csv,Wolfsburg,34,36,48,33
+D1_2017_2018.csv,Hamburg,34,29,53,31
+D1_2017_2018.csv,FC Koln,34,35,70,22
+D1_2018_2019.csv,Bayern Munich,34,88,32,78
+D1_2018_2019.csv,Dortmund,34,81,44,76
+D1_2018_2019.csv,RB Leipzig,34,63,29,66
+D1_2018_2019.csv,Leverkusen,34,69,52,58
+D1_2018_2019.csv,M'gladbach,34,55,42,55
+D1_2018_2019.csv,Wolfsburg,34,62,50,55
+D1_2018_2019.csv,Ein Frankfurt,34,60,48,54
+D1_2018_2019.csv,Werder Bremen,34,58,49,53
+D1_2018_2019.csv,Hoffenheim,34,70,52,51
+D1_2018_2019.csv,Fortuna Dusseldorf,34,49,65,44
+D1_2018_2019.csv,Hertha,34,49,57,43
+D1_2018_2019.csv,Mainz,34,46,57,43
+D1_2018_2019.csv,Freiburg,34,46,61,36
+D1_2018_2019.csv,Schalke 04,34,37,55,33
+D1_2018_2019.csv,Augsburg,34,51,71,32
+D1_2018_2019.csv,Stuttgart,34,32,70,28
+D1_2018_2019.csv,Hannover,34,31,71,21
+D1_2018_2019.csv,Nurnberg,34,26,68,19
+D1_2019_2020.csv,Bayern Munich,34,100,32,82
+D1_2019_2020.csv,Dortmund,34,84,41,69
+D1_2019_2020.csv,RB Leipzig,34,81,37,66
+D1_2019_2020.csv,M'gladbach,34,66,40,65
+D1_2019_2020.csv,Leverkusen,34,61,44,63
+D1_2019_2020.csv,Hoffenheim,34,53,53,52
+D1_2019_2020.csv,Wolfsburg,34,48,46,49
+D1_2019_2020.csv,Freiburg,34,48,47,48
+D1_2019_2020.csv,Ein Frankfurt,34,59,60,45
+D1_2019_2020.csv,Hertha,34,48,59,41
+D1_2019_2020.csv,Union Berlin,34,41,58,41
+D1_2019_2020.csv,Schalke 04,34,38,58,39
+D1_2019_2020.csv,Mainz,34,44,65,37
+D1_2019_2020.csv,FC Koln,34,51,69,36
+D1_2019_2020.csv,Augsburg,34,45,63,36
+D1_2019_2020.csv,Werder Bremen,34,42,69,31
+D1_2019_2020.csv,Fortuna Dusseldorf,34,36,67,30
+D1_2019_2020.csv,Paderborn,34,37,74,20
+D1_2020_2021.csv,Bayern Munich,34,99,44,78
+D1_2020_2021.csv,RB Leipzig,34,60,32,65
+D1_2020_2021.csv,Dortmund,34,75,46,64
+D1_2020_2021.csv,Wolfsburg,34,61,37,61
+D1_2020_2021.csv,Ein Frankfurt,34,69,53,60
+D1_2020_2021.csv,Leverkusen,34,53,39,52
+D1_2020_2021.csv,Union Berlin,34,50,43,50
+D1_2020_2021.csv,M'gladbach,34,64,56,49
+D1_2020_2021.csv,Stuttgart,34,56,55,45
+D1_2020_2021.csv,Freiburg,34,52,52,45
+D1_2020_2021.csv,Hoffenheim,34,52,54,43
+D1_2020_2021.csv,Mainz,34,39,56,39
+D1_2020_2021.csv,Augsburg,34,36,54,36
+D1_2020_2021.csv,Hertha,34,41,52,35
+D1_2020_2021.csv,Bielefeld,34,26,52,35
+D1_2020_2021.csv,FC Koln,34,34,60,33
+D1_2020_2021.csv,Werder Bremen,34,36,57,31
+D1_2020_2021.csv,Schalke 04,34,25,86,16
+D1_2021_2022.csv,Bayern Munich,34,97,37,77
+D1_2021_2022.csv,Dortmund,34,85,52,69
+D1_2021_2022.csv,Leverkusen,34,80,47,64
+D1_2021_2022.csv,RB Leipzig,34,72,37,58
+D1_2021_2022.csv,Union Berlin,34,50,44,57
+D1_2021_2022.csv,Freiburg,34,58,46,55
+D1_2021_2022.csv,FC Koln,34,52,49,52
+D1_2021_2022.csv,Mainz,34,50,45,46
+D1_2021_2022.csv,Hoffenheim,34,58,60,46
+D1_2021_2022.csv,M'gladbach,34,54,61,45
+D1_2021_2022.csv,Ein Frankfurt,34,45,49,42
+D1_2021_2022.csv,Wolfsburg,34,43,54,42
+D1_2021_2022.csv,Bochum,34,38,52,42
+D1_2021_2022.csv,Augsburg,34,39,56,38
+D1_2021_2022.csv,Stuttgart,34,41,59,33
+D1_2021_2022.csv,Hertha,34,37,71,33
+D1_2021_2022.csv,Bielefeld,34,27,53,28
+D1_2021_2022.csv,Greuther Furth,34,28,82,18
+D1_2022_2023.csv,Bayern Munich,34,92,38,71
+D1_2022_2023.csv,Dortmund,34,83,44,71
+D1_2022_2023.csv,RB Leipzig,34,64,41,66
+D1_2022_2023.csv,Union Berlin,34,51,38,62
+D1_2022_2023.csv,Freiburg,34,51,44,59
+D1_2022_2023.csv,Leverkusen,34,57,49,50
+D1_2022_2023.csv,Ein Frankfurt,34,58,52,50
+D1_2022_2023.csv,Wolfsburg,34,57,48,49
+D1_2022_2023.csv,Mainz,34,54,55,46
+D1_2022_2023.csv,M'gladbach,34,52,55,43
+D1_2022_2023.csv,FC Koln,34,49,54,42
+D1_2022_2023.csv,Hoffenheim,34,48,57,36
+D1_2022_2023.csv,Werder Bremen,34,51,64,36
+D1_2022_2023.csv,Bochum,34,40,72,35
+D1_2022_2023.csv,Augsburg,34,42,63,34
+D1_2022_2023.csv,Stuttgart,34,45,57,33
+D1_2022_2023.csv,Schalke 04,34,35,71,31
+D1_2022_2023.csv,Hertha,34,42,69,29
+D1_2023_2024.csv,Leverkusen,34,89,24,90
+D1_2023_2024.csv,Stuttgart,34,78,39,73
+D1_2023_2024.csv,Bayern Munich,34,94,45,72
+D1_2023_2024.csv,RB Leipzig,34,77,39,65
+D1_2023_2024.csv,Dortmund,34,68,43,63
+D1_2023_2024.csv,Ein Frankfurt,34,51,50,47
+D1_2023_2024.csv,Hoffenheim,34,66,66,46
+D1_2023_2024.csv,Heidenheim,34,50,55,42
+D1_2023_2024.csv,Werder Bremen,34,48,54,42
+D1_2023_2024.csv,Freiburg,34,45,58,42
+D1_2023_2024.csv,Augsburg,34,50,60,39
+D1_2023_2024.csv,Wolfsburg,34,41,56,37
+D1_2023_2024.csv,Mainz,34,39,51,35
+D1_2023_2024.csv,M'gladbach,34,56,67,34
+D1_2023_2024.csv,Union Berlin,34,33,58,33
+D1_2023_2024.csv,Bochum,34,42,74,33
+D1_2023_2024.csv,FC Koln,34,28,60,27
+D1_2023_2024.csv,Darmstadt,34,30,86,17
+D1_2024_2025.csv,Bayern Munich,34,99,32,82
+D1_2024_2025.csv,Leverkusen,34,72,43,69
+D1_2024_2025.csv,Ein Frankfurt,34,68,46,60
+D1_2024_2025.csv,Dortmund,34,71,51,57
+D1_2024_2025.csv,Freiburg,34,49,53,55
+D1_2024_2025.csv,Mainz,34,55,43,52
+D1_2024_2025.csv,RB Leipzig,34,53,48,51
+D1_2024_2025.csv,Werder Bremen,34,54,57,51
+D1_2024_2025.csv,Stuttgart,34,64,53,50
+D1_2024_2025.csv,M'gladbach,34,55,57,45
+D1_2024_2025.csv,Wolfsburg,34,56,54,43
+D1_2024_2025.csv,Augsburg,34,35,51,43
+D1_2024_2025.csv,Union Berlin,34,35,51,40
+D1_2024_2025.csv,St Pauli,34,28,41,32
+D1_2024_2025.csv,Hoffenheim,34,46,68,32
+D1_2024_2025.csv,Heidenheim,34,37,64,29
+D1_2024_2025.csv,Holstein Kiel,34,49,80,25
+D1_2024_2025.csv,Bochum,34,33,67,25

@@ -10,6 +10,7 @@ abstract: ""
 format: pdf
 toc: true
 number-sections: true
+bibliography: reference.bib
 ---
 
 \newpage
