@@ -11,7 +11,6 @@ suppressPackageStartupMessages({
   library(stringr)
 })
 
-# --- project-aware paths -----------------------------------------------------
 PROJECT   <- tryCatch(here::here(), error = function(e) getwd())
 ANAL_DIR  <- fs::path(PROJECT, "data", "analysis_data")  # input source (from script 02)
 OUT_DIR   <- fs::path(PROJECT, "output")                 # <- write outputs here

@@ -12,7 +12,6 @@ suppressPackageStartupMessages({
   library(here)
 })
 
-# --- project-aware paths -----------------------------------------------------
 PROJECT   <- tryCatch(here::here(), error = function(e) getwd())
 RAW_DIR   <- fs::path(PROJECT, "data", "raw_data")
 CLEAN_DIR <- fs::path(PROJECT, "data", "cleaned_data")
@@ -20,7 +19,7 @@ fs::dir_create(CLEAN_DIR, recurse = TRUE)
 
 FILE_REGEX <- "^(D1).*\\.[Cc][Ss][Vv]$"
 
-# --- helpers -----------------------------------------------------------------
+
 
 # 1) Drop "Unnamed:*" and columns that are entirely NA
 drop_empty_cols <- function(df) {
@@ -118,7 +117,6 @@ clean_one_file <- function(infile) {
   invisible(out_fp)
 }
 
-# --- discover files and run cleaning ----------------------------------------
 all_files <- fs::dir_ls(RAW_DIR, type = "file", recurse = FALSE)
 files <- all_files[grepl(FILE_REGEX, fs::path_file(all_files), perl = TRUE)]
 

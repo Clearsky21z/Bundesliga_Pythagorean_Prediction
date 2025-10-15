@@ -18,8 +18,7 @@ abstract: >
   for 2024/25 at 9, 18, and 27 rounds by combining realized points to date with
   Pythagorean-based projections for remaining fixtures. We report accuracy at
   each checkpoint, visualize predicted vs. actual points, and highlight the
-  largest over- and under-performers. All code is reproducible from the project
-  scripts, and intermediate/summary artifacts are written to the `output/` directory.
+  largest over- and under-performers.
 format:
   pdf:
     toc: true
@@ -70,22 +69,21 @@ loso_med_r   <- median(loso$r,   na.rm = TRUE)
 
 fmt_num <- function(x, k=2) format(round(x, k), nsmall=k, big.mark=",")
 
-# Sanitize any underscores in text columns to avoid LaTeX issues if needed (kable escapes by default)
 ```
 
 # Introduction
+A simple, durable idea in sports analytics is that scoring and conceding contain most of the information needed to forecast a team’s points total. In football this is commonly operationalised with a “Pythagorean” relationship between goals for (GF), goals against (GA), and expected points. Following the presentation in Chapter 5 of the Soccer Analytics textbook and Professor Clive Beggs’ work applying Pythagorean points to league football (@beggs), we tailor a four-parameter variant to the German Bundesliga and evaluate how well it predicts the final table during the 2024/25 season.
 
-Forecasting league tables from scoring profiles is a long-standing idea in sports analytics.
-This paper tailors a **four-parameter Pythagorean model** to the Bundesliga, fits the
-parameters on seasons **2010/11–2023/24**, and evaluates *prospective* accuracy
-on **2024/25** using “points-in-table” (PiT) projections at Round 9, 18, and 27.
+This paper makes three contributions. First, we construct a reproducible pipeline from raw match CSVs to end-of-season (EoS) team tables for the modern Bundesliga era (2010/11–2023/24). Second, we estimate **league-specific** coefficients ((a,b,c,d)) by minimizing mean absolute error on a pooled team–season panel, and we quantify transportability with leave-one-season-out (LOSO) validation. Third, we assess **prospective** “points-in-table” (PiT) forecasts for 2024/25 after 9, 18, and 27 rounds, combining realized points to date with Pythagorean projections for the remaining fixtures.
 
-We proceed as follows. Section @ref(sec-methods) formalizes the model and the
+Methodologically we follow the four-parameter form popularized in the football literature: the expected points for team $i$ are $\widehat{\text{PTS}}_{i}=a\cdot\text{frac}_{i}\cdot\text{PLD}_{i}$ where $\text{frac}_{i}=\dfrac{GF_{i}^{\,b}}{GF_{i}^{\,c}+GA_{i}^{\,d}}$.
+
+The paper proceeds as follows. Section @sec-methods formalizes the model and the
 reproducible pipeline used to clean raw CSVs, construct season tables, estimate
-coefficients, and perform validation. Section @ref(sec-results) reports fitted
-coefficients, in-sample diagnostics (Table @tbl-in-sample), LOSO validation
+coefficients, and perform validation. Section @sec-results reports fitted
+coefficients, in-sample diagnostics (@tbl-in-sample), LOSO validation
 (Table @tbl-loso), and prospective PiT performance for 2024/25
-(Table @tbl-pit-summary; Figures @fig-r09–@fig-r27). Section @ref(sec-discussion)
+(Table @tbl-pit-summary; Figures @fig-r09–@fig-r27). Section @sec-discussion
 interprets the findings, limitations, and extensions. All artifacts are read from
 the `output/` directory.
 
@@ -111,14 +109,70 @@ team–season set (2010/11–2023/24) using **Nelder–Mead** with multiple star
 refit on all other seasons and evaluate on $s$. We summarize performance by
 median MAE and median Pearson correlation $r$ across held-out seasons.
 
-## Data and Measurement
+## Data {#sec-data}
 
-Raw match CSVs for each season (e.g., `D1_2018_2019.csv`) are cleaned to standardize
-columns, repair result codes from the recorded goals, and parse date/time. For each
-season we construct an EoS table (played, goals for/against, goal difference, points);
-these are also stacked into a pooled dataset used for estimation. Variables are all
-game-level primitives or simple team-level aggregates. The full pipeline lives in
-`script/` and writes all analysis-ready artifacts to `output/`.
+### Data Overview {#sec-overview}
+
+This study uses match-level Bundesliga CSV files covering the modern era (2010/11–2024/25). Each file contains all fixtures for a season with home/away teams, goals scored, and the full-time result. We transform these match records into season-level team summaries (end-of-season, EoS) and also build a stacked panel of team–season observations for 2010/11–2023/24 to estimate league-specific Pythagorean coefficients. The 2024/25 season is reserved for *prospective* evaluation using points-in-table (PiT) forecasts after 9, 18, and 27 rounds.
+
+### Variables and Measurements
+
+\begin{enumerate}
+\item \textbf{Season}: File-level season tag (e.g., \texttt{D1\_2010\_2011.csv}) used as the season identifier.
+\item \textbf{Team}: Club name in that season (character string, normalized in cleaning).
+\item \textbf{PLD}: Matches played by the team in the league season (integer; Bundesliga: 34).
+\item \textbf{GF}: Goals For — total goals scored by the team across league matches (integer).
+\item \textbf{GA}: Goals Against — total goals conceded by the team across league matches (integer).
+\item \textbf{PTS}: League points under the 3–1–0 system (3 for a win, 1 for a draw, 0 for a loss), computed from match results (integer).
+\end{enumerate}
+
+These variables are sufficient to compute the Pythagorean fraction and the implied points expectation without any external ratings or betting information.
+
+### Dataset Selection
+
+We estimate coefficients on the pooled panel of team–seasons from **2010/11–2023/24** only. Those years provide a consistent competitive format (18 teams, 34 rounds) and align with the time span used in our scripts. All seasons with clean, complete data in that window are included. The **2024/25** season is held out entirely for prospective testing: we form PiT predictions after 9, 18, and 27 rounds and compare them with the final 2024/25 table.
+
+### Data Processing Tools
+
+All steps are scripted in **R**:
+
+* `script/01-data_cleaning.R`: drop empty columns, normalize team names, parse dates/times, and recompute `FTR` from goals.
+* `script/02-data_aggregating.R`: build per-season EoS tables and a pooled stack.
+* `script/03-fitting_coefficients.R`: filter to 2010/11–2023/24, fit ((a,b,c,d)) by MAE (multi-start Nelder–Mead), compute in-sample and LOSO metrics; writes CSVs to `output/`.
+* `script/04-pit_testing_2024_25.R`: generate PiT evaluations for 2024/25 (Rounds 9/18/27) and save plots/tables to `output/`.
+
+Core packages: @dplyr, @readr, @ggplot2, @here, @fs, @stringr, @knitr.
+
+
+### Example: Bundesliga 2010/11 End-of-season Table
+
+@tbl-eos-2010 shows the final Bundesliga standings for 2010/11 season as reconstructed from the cleaned match file.
+
+```{r}
+#| label: tbl-eos-2010
+#| tbl-cap: "Bundesliga 2010/11 End-of-season Table"
+
+library(readr)
+library(dplyr)
+library(knitr)
+library(here)
+
+pool_pred <- read_csv(here("output", "bundesliga_pool_with_pred.csv"),
+                      show_col_types = FALSE)
+
+eos_2010 <- pool_pred %>%
+  filter(grepl("^D1_2010_2011", Season)) %>%
+  mutate(GD = GF - GA) %>%
+  select(Team, PLD, GF, GA, GD, PTS) %>%   # <- Season removed here
+  arrange(desc(PTS), desc(GD), desc(GF))
+
+kable(
+  eos_2010,
+  format = "latex",
+  booktabs = TRUE,
+  linesep = ""       
+)
+```
 
 # Results {#sec-results}
 
@@ -134,12 +188,12 @@ The pooled Bundesliga coefficients are **`r coef_line`**
 
 ```{r}
 #| label: tbl-in-sample
-#| tbl-cap: "In-sample metrics by season (2010/11–2023/24). Lower MAE and higher r are better."
+#| tbl-cap: "In-sample metrics by season (2010/11–2023/24)"
 in_sample |>
   arrange(Season) |>
   mutate(MAE = as.numeric(sprintf("%.2f", MAE)),
          r   = as.numeric(sprintf("%.3f", r))) |>
-  kable(format = "latex", booktabs = TRUE, caption = "In-sample metrics by season (2010/11–2023/24).")
+  kable(format = "latex", booktabs = TRUE)
 ```
 
 ### Leave-one-season-out (LOSO)
@@ -151,12 +205,12 @@ Overall across held-out seasons:
 
 ```{r}
 #| label: tbl-loso
-#| tbl-cap: "LOSO per-season holdout performance (train on all-but-one, test on the held-out season)."
+#| tbl-cap: "LOSO per-season holdout performance"
 loso |>
   arrange(Season) |>
   mutate(MAE = as.numeric(sprintf("%.2f", MAE)),
          r   = as.numeric(sprintf("%.3f", r))) |>
-  kable(format = "latex", booktabs = TRUE, caption = "LOSO per-season holdout performance.")
+  kable(format = "latex", booktabs = TRUE)
 ```
 
 ## Prospective 2024/25 PiT
@@ -170,7 +224,7 @@ for remaining fixtures under the fitted coefficients.
 pit_summary |>
   mutate(MAE = as.numeric(sprintf("%.2f", MAE)),
          r   = as.numeric(sprintf("%.3f", r))) |>
-  kable(format = "latex", booktabs = TRUE, caption = "Bundesliga 2024/25 PiT summary after 9, 18, and 27 rounds.")
+  kable(format = "latex", booktabs = TRUE)
 ```
 
 ### Visual comparisons (predicted vs actual)
@@ -209,23 +263,16 @@ diff27 |>
     Abs_Error = round(abs_err, 1),
     Direction = flag
   ) |>
-  kable(format = "latex", booktabs = TRUE, caption = "Top-5 absolute deviations at Round 27.")
+  kable(format = "latex", booktabs = TRUE)
 ```
 
 # Discussion {#sec-discussion}
 
-**Interpretation.** The exponents $b,c,d$ govern curvature and the asymmetric
-impact of scoring vs conceding; $a$ maps expected fractions to points. The fitted
-values track Bundesliga totals closely across the modern era.
+## Contributions and Findings
+This paper calibrates a four-parameter Pythagorean points model to the Bundesliga, following the formulation discussed in Chapter 5 of the Soccer Analytics text and the approach used by Professor Clive Beggs. We estimate league-specific coefficients on seasons 2010/11–2023/24 and evaluate prospective “points-in-table” (PiT) forecasts for 2024/25 at three checkpoints. The historical fit shows that a simple transformation of goals for and goals against explains end-of-season points with small average error. On the hold-out season, forecasts improve as the campaign progresses: early estimates (Round 9) are noisier, while by Round 27 the predictions are close to the realized totals (see @tbl-pit-summary) and Figures @fig-r09–@fig-r27)). This confirms a practical message from the literature: across a full league schedule, goal production and prevention are strong summary measures of team performance.
 
-**Generalization.** LOSO medians (MAE `r sprintf('%.2f', loso_med_mae)`, $r$ `r sprintf('%.3f', loso_med_r)`)
-indicate stable transportability within 2010/11–2023/24.
+## Limitations
+The model projects future points using only current goals for/against and matches played. It does not account for opponent strength, injuries, tactical changes, remaining home/away mix, red cards, or schedule congestion. As a result, it will rate a traditionally strong club poorly during an extended slump until the goal balance turns, and it will continue to credit an over-performing side until their goals regress. These omissions are most visible early in a season when fixture lists can be uneven.
 
-**Prospective accuracy.** On 2024/25, error shrinks with more rounds observed
-(Table @tbl-pit-summary; Figures @fig-r09–@fig-r27). By Round 27, correlation is
-$\approx$0.96 with MAE $\approx$3.3 points—useful for table-level forecasting.
-
-**Limitations & extensions.** PiT assumes future match expectation depends only on
-current GF/GA, not schedule strength, injuries, or tactical change. Extensions include
-opponent-adjusted projections, hierarchical priors, alternative robust losses, and
-uncertainty bands.
+## Future Directions
+Several extensions would make the model more realistic. First, generate opponent-aware projections for remaining fixtures using xG or rating models and simulate the schedule so home/away and strength of schedule are reflected. Second, allow team form to evolve over time and let (a,b,c,d) drift modestly across seasons via a hierarchical fit. Third, replace pure MAE with a robust loss and report uncertainty—bootstrap or Bayesian intervals—so PiT outputs include ranges, not just points. Finally, in the first 5–10 rounds, shrink expectations toward league averages or pre-season ratings to avoid overreacting to short runs.

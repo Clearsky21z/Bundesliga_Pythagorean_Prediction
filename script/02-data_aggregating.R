@@ -10,7 +10,6 @@ suppressPackageStartupMessages({
   library(here)
 })
 
-# --- project-aware paths -----------------------------------------------------
 PROJECT   <- tryCatch(here::here(), error = function(e) getwd())
 CLEAN_DIR <- fs::path(PROJECT, "data", "cleaned_data")
 ANAL_DIR  <- fs::path(PROJECT, "data", "analysis_data")
