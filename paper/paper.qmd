@@ -276,3 +276,5 @@ The model projects future points using only current goals for/against and matche
 
 ## Future Directions
 Several extensions would make the model more realistic. First, generate opponent-aware projections for remaining fixtures using xG or rating models and simulate the schedule so home/away and strength of schedule are reflected. Second, allow team form to evolve over time and let (a,b,c,d) drift modestly across seasons via a hierarchical fit. Third, replace pure MAE with a robust loss and report uncertainty—bootstrap or Bayesian intervals—so PiT outputs include ranges, not just points. Finally, in the first 5–10 rounds, shrink expectations toward league averages or pre-season ratings to avoid overreacting to short runs.
+
+# References
